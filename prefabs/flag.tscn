@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://boe87p8xfddqp"]
+
+[ext_resource type="Script" path="res://scripts/misc/flag.gd" id="1_0pmm5"]
+[ext_resource type="Texture2D" uid="uid://cer1imdlhxiej" path="res://resources/texture/flag/flags.png" id="2_ky6bw"]
+[ext_resource type="Texture2D" uid="uid://bys6rfupomev4" path="res://resources/texture/flag/flag_texture.png" id="2_ldfai"]
+[ext_resource type="Texture2D" uid="uid://bhwk8lsag4lk3" path="res://resources/texture/flag/flag_mask.png" id="2_ree8a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6nxb"]
+atlas = ExtResource("2_ky6bw")
+region = Rect2(33, 66, 32, 32)
+
+[node name="Flag" type="Node2D"]
+script = ExtResource("1_0pmm5")
+
+[node name="Mask" type="Sprite2D" parent="."]
+clip_children = 1
+position = Vector2(0, 4.76837e-07)
+scale = Vector2(0.117188, 0.117188)
+texture = ExtResource("2_ree8a")
+
+[node name="FlagBackground" type="Sprite2D" parent="Mask"]
+position = Vector2(0, -4.06901e-06)
+scale = Vector2(8.53333, 8.53333)
+texture = SubResource("AtlasTexture_l6nxb")
+
+[node name="FlagSymbol" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, 4.76837e-07)
+scale = Vector2(1.875, 1.875)
+texture = ExtResource("2_ldfai")

@@ -1,15 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://8a2k2x5xwnca"]
+[gd_scene load_steps=14 format=3 uid="uid://8a2k2x5xwnca"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_xtbv3"]
 [ext_resource type="Texture2D" uid="uid://ba68d2fixk1s2" path="res://resources/texture/player/player.png" id="2_hnqtq"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q0mh"]
+atlas = ExtResource("2_hnqtq")
+region = Rect2(34, 0, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_nyptq"]
 atlas = ExtResource("2_hnqtq")
 region = Rect2(0, 34, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cu0a5"]
-atlas = ExtResource("2_hnqtq")
-region = Rect2(17, 34, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gco1f"]
 atlas = ExtResource("2_hnqtq")
@@ -18,6 +18,10 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_36ytl"]
 atlas = ExtResource("2_hnqtq")
 region = Rect2(17, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmjvd"]
+atlas = ExtResource("2_hnqtq")
+region = Rect2(17, 34, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5q6xs"]
 atlas = ExtResource("2_hnqtq")
@@ -31,13 +35,18 @@ region = Rect2(17, 17, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nyptq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cu0a5")
+"texture": SubResource("AtlasTexture_2q0mh")
 }],
 "loop": true,
-"name": &"air",
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyptq")
+}],
+"loop": true,
+"name": &"fall",
 "speed": 10.0
 }, {
 "frames": [{
@@ -53,6 +62,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_rmjvd")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5q6xs")
 }, {
 "duration": 1.0,
@@ -63,18 +80,94 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Curve" id="Curve_0wnkf"]
+_data = [Vector2(0, 1), 0.0, -3.03187, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_c1vpn"]
+_data = [Vector2(0, 1), 0.0, -1.90171, 0, 0, Vector2(0.769663, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iupei"]
 size = Vector2(40, 40)
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 3
 script = ExtResource("1_xtbv3")
 speed = 4.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_q156e")
-animation = &"idle"
-frame_progress = 0.120606
+animation = &"crouch"
+
+[node name="JumpParticle" type="CPUParticles2D" parent="Sprite"]
+z_index = 5
+position = Vector2(0, 5)
+scale = Vector2(0.2, 0.2)
+emitting = false
+amount = 64
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.2
+direction = Vector2(0, 1)
+spread = 80.0
+gravity = Vector2(0, 49)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+angular_velocity_min = -5.0
+angular_velocity_max = 5.0
+angle_min = -45.0
+angle_max = 45.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_0wnkf")
+
+[node name="LandParticle" type="CPUParticles2D" parent="Sprite"]
+z_index = 5
+position = Vector2(0, 6.6)
+scale = Vector2(0.2, 0.2)
+emitting = false
+amount = 64
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.2
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, 49)
+initial_velocity_min = 40.0
+initial_velocity_max = 80.0
+angular_velocity_min = -5.0
+angular_velocity_max = 5.0
+damping_min = 5.0
+damping_max = 8.0
+angle_min = -45.0
+angle_max = 45.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_0wnkf")
+
+[node name="RunParticle" type="CPUParticles2D" parent="Sprite"]
+visible = false
+z_index = 5
+position = Vector2(-3.8, 6)
+scale = Vector2(0.2, 0.2)
+amount = 64
+lifetime = 0.3
+randomness = 0.24
+direction = Vector2(-8, -6)
+gravity = Vector2(0, 98)
+initial_velocity_min = 20.0
+initial_velocity_max = 60.0
+angular_velocity_min = -5.0
+angular_velocity_max = 5.0
+angle_min = -45.0
+angle_max = 45.0
+scale_amount_min = 8.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_c1vpn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 10)

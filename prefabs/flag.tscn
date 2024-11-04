@@ -19,11 +19,11 @@ scale = Vector2(0.117188, 0.117188)
 texture = ExtResource("2_ree8a")
 
 [node name="FlagBackground" type="Sprite2D" parent="Mask"]
-position = Vector2(0, -4.06901e-06)
-scale = Vector2(8.53333, 8.53333)
+position = Vector2(0, -5.24521e-06)
+scale = Vector2(8.53333, 5.86664)
 texture = SubResource("AtlasTexture_l6nxb")
 
-[node name="FlagSymbol" type="Sprite2D" parent="."]
-position = Vector2(4.76837e-07, 4.76837e-07)
-scale = Vector2(1.875, 1.875)
+[node name="FlagSymbol" type="Sprite2D" parent="Mask"]
+position = Vector2(4.06899e-06, 0)
+scale = Vector2(12, 12)
 texture = ExtResource("2_ldfai")

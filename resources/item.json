@@ -1,0 +1,16 @@
+﻿{
+    "items": [
+        {
+            "texture_idx": 0,
+            "item_name": "Tin"
+        },
+        {
+            "texture_idx": 1,
+            "item_name": "Aluminium"
+        },
+        {
+            "texture_idx": 2,
+            "item_name": "Copper"
+        }
+    ]
+}

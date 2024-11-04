@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://x1wnb4p14002"]
+[gd_scene load_steps=5 format=3 uid="uid://x1wnb4p14002"]
 
 [ext_resource type="PackedScene" uid="uid://8a2k2x5xwnca" path="res://prefabs/player.tscn" id="1_fh0k4"]
 [ext_resource type="Texture2D" uid="uid://c166ris5i5wey" path="res://resources/texture/icon.svg" id="2_4hfnb"]
+[ext_resource type="PackedScene" uid="uid://cdlma6utfm0qh" path="res://prefabs/item.tscn" id="3_jimpc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srnl2"]
 size = Vector2(128, 128)
@@ -32,3 +33,14 @@ texture = ExtResource("2_4hfnb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_srnl2")
+
+[node name="Item" parent="." instance=ExtResource("3_jimpc")]
+position = Vector2(-616, -121)
+
+[node name="Item2" parent="." instance=ExtResource("3_jimpc")]
+position = Vector2(-532, -259)
+item_idx = 1
+
+[node name="Item3" parent="." instance=ExtResource("3_jimpc")]
+position = Vector2(-454, -139)
+item_idx = 2

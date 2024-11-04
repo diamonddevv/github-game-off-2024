@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://8a2k2x5xwnca"]
+[gd_scene load_steps=15 format=3 uid="uid://8a2k2x5xwnca"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_xtbv3"]
 [ext_resource type="Texture2D" uid="uid://ba68d2fixk1s2" path="res://resources/texture/player/player.png" id="2_hnqtq"]
+[ext_resource type="Script" path="res://scripts/inventory/inventory.gd" id="3_crg83"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2q0mh"]
 atlas = ExtResource("2_hnqtq")
@@ -180,3 +181,6 @@ scale_amount_curve = SubResource("Curve_c1vpn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_iupei")
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("3_crg83")

@@ -3,6 +3,8 @@ class_name Inventory
 
 static var inv_screen_prefab: PackedScene = ResourceLoader.load("res://prefabs/inventory_screen.tscn")
 
+signal updated()
+
 @export var max_size: int = 128
 
 var items: Dictionary
@@ -28,3 +30,5 @@ func add_item(p_name: String, count: int) -> void:
 		items[p_name] += count
 	else:
 		items[p_name] = count
+		
+		updated.emit()

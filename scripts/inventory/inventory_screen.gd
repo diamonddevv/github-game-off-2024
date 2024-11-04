@@ -11,6 +11,8 @@ var inventory: Inventory
 
 func _ready() -> void:
 	_populate()
+	
+	inventory.updated.connect(_populate)
 
 
 func _process(_delta: float) -> void:
@@ -18,6 +20,9 @@ func _process(_delta: float) -> void:
 		close()
 
 func _populate() -> void:
+	for c in cells.get_children():
+		c.queue_free()
+	
 	capacity.text = "%s/%s" % [inventory.capacity, inventory.max_size]
 	for item_name in inventory.items:
 		cells.add_child(_make_cell(item_name, inventory.items[item_name]))

@@ -1,16 +1,44 @@
-﻿{
-    "items": [
-        {
-            "texture_idx": 0,
-            "item_name": "Tin"
-        },
-        {
-            "texture_idx": 1,
-            "item_name": "Aluminium"
-        },
-        {
-            "texture_idx": 2,
-            "item_name": "Copper"
-        }
-    ]
+{
+	"items": [
+		{
+			"texture_idx": 0,
+			"item_name": "Tin"
+		},
+		{
+			"texture_idx": 1,
+			"item_name": "Aluminium"
+		},
+		{
+			"texture_idx": 2,
+			"item_name": "Copper"
+		},
+		{
+			"texture_idx": 3,
+			"item_name": "Titanium"
+		},
+		{
+			"texture_idx": 4,
+			"item_name": "Iron"
+		},
+		{
+			"texture_idx": 5,
+			"item_name": "Gold"
+		},
+		{
+			"texture_idx": 6,
+			"item_name": "Lithium"
+		},
+		{
+			"texture_idx": 7,
+			"item_name": "Vanadium"
+		},
+		{
+			"texture_idx": 8,
+			"item_name": "Silver"
+		},
+		{
+			"texture_idx": 9,
+			"item_name": "Chromium"
+		},
+	]
 }

@@ -1,4 +1,35 @@
 extends Node
 class_name GlobalManagerAutoloaded
 
+const items_json_path: String = "res://resources/item.json"
+
 var player: Player
+var item_types: Array[ItemType]
+
+func _ready() -> void:
+	load_item_types()
+
+func load_item_types():
+	item_types = []
+	var data: Array = JSON.parse_string(FileAccess.open(items_json_path, FileAccess.READ).get_as_text())["items"]
+	
+	for d in data:
+		var item_type = ItemType.new()
+		item_type.item_name = d["item_name"]
+		item_type.item_texture_index = d["texture_idx"]
+		
+		item_types.append(item_type)
+		
+	
+static func get_texture_region_indexed(index: int, width: int, height: int, seperation: int, row: int):
+	var x: int = (index % row)
+	var y: int = roundi(index / row)
+
+	x = width * x + seperation * (x - 1)
+	y = height * y + seperation * (y - 1)
+
+	return Rect2i(x, y, width, height)
+	
+class ItemType:
+	var item_name: String
+	var item_texture_index: int

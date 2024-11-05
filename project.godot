@@ -37,6 +37,10 @@ folder_colors={
 "res://scripts/": "green"
 }
 
+[gui]
+
+theme/custom="res://resources/global_default_theme.tres"
+
 [input]
 
 jump={

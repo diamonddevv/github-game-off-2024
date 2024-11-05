@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://x1wnb4p14002"]
 
-[ext_resource type="PackedScene" uid="uid://8a2k2x5xwnca" path="res://prefabs/player.tscn" id="1_fh0k4"]
+[ext_resource type="PackedScene" uid="uid://8a2k2x5xwnca" path="res://prefabs/game/player.tscn" id="1_fh0k4"]
 [ext_resource type="Texture2D" uid="uid://c166ris5i5wey" path="res://resources/texture/icon.svg" id="2_4hfnb"]
-[ext_resource type="PackedScene" uid="uid://cdlma6utfm0qh" path="res://prefabs/item.tscn" id="3_jimpc"]
+[ext_resource type="PackedScene" uid="uid://cdlma6utfm0qh" path="res://prefabs/game/item.tscn" id="3_jimpc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srnl2"]
 size = Vector2(128, 128)
@@ -36,39 +36,3 @@ shape = SubResource("RectangleShape2D_srnl2")
 
 [node name="Item" parent="." instance=ExtResource("3_jimpc")]
 position = Vector2(-616, -121)
-
-[node name="Item2" parent="." instance=ExtResource("3_jimpc")]
-position = Vector2(-532, -259)
-item_idx = 1
-
-[node name="Item3" parent="." instance=ExtResource("3_jimpc")]
-position = Vector2(-437, -142)
-item_idx = 2
-
-[node name="Item4" parent="." instance=ExtResource("3_jimpc")]
-position = Vector2(-461, -253)
-item_idx = 3
-
-[node name="Item5" parent="." instance=ExtResource("3_jimpc")]
-position = Vector2(-597, -359)
-item_idx = 4
-
-[node name="Item6" parent="." instance=ExtResource("3_jimpc")]
-position = Vector2(-259, -330)
-item_idx = 5
-
-[node name="Item7" parent="." instance=ExtResource("3_jimpc")]
-position = Vector2(-696, -236)
-item_idx = 6
-
-[node name="Item8" parent="." instance=ExtResource("3_jimpc")]
-position = Vector2(-372, -243)
-item_idx = 7
-
-[node name="Item9" parent="." instance=ExtResource("3_jimpc")]
-position = Vector2(-302, -160)
-item_idx = 8
-
-[node name="Item10" parent="." instance=ExtResource("3_jimpc")]
-position = Vector2(-260, -246)
-item_idx = 9

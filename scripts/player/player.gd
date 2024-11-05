@@ -33,6 +33,7 @@ func _physics_process(delta: float) -> void:
 	_player_movement(delta)
 	
 	$CollisionShape2D.shape.size = Vector2(40, 30 if _crouching else 40)
+	$CollisionShape2D.position = Vector2(0, 15 if _crouching else 10)
 	
 	_last_on_ground = is_on_floor()
 	

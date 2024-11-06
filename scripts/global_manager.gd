@@ -43,7 +43,7 @@ func load_recipes():
 			recipe.ingredients.append(ing)
 
 
-static func get_texture_region_indexed(index: int, width: int, height: int, seperation: int, row: int):
+static func get_texture_region_indexed(index: int, width: int, height: int, seperation: int, row: int) -> Rect2i:
 	var x: int = (index % row)
 	var y: int = roundi(index / row)
 

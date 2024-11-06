@@ -5,7 +5,7 @@ static var inv_screen_prefab: PackedScene = ResourceLoader.load("res://prefabs/u
 
 signal updated()
 
-@export var max_size: int = 128
+@export var max_size: int = 32
 
 var items: Dictionary
 var capacity: int = 0
@@ -24,11 +24,23 @@ func open_inventory_screen() -> void:
 	screen_open = false
 
 	
-func add_item(item_idx: int, count: int) -> void:
-	capacity += count
+func add_item(item_idx: int, count: int) -> int:
+	
+	if capacity >= max_size:
+		return 0
+	
+	var added: int = 0
+	if capacity + count <= max_size:
+		added = count
+	else:
+		added = max_size - capacity
+	
 	if items.has(item_idx):
 		items[item_idx] += count
 	else:
 		items[item_idx] = count
-		
-		updated.emit()
+	
+	capacity += added
+	updated.emit()
+	return added
+	

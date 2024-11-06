@@ -1,13 +1,17 @@
 extends Node
 class_name GlobalManagerAutoloaded
 
-const items_json_path: String = "res://resources/item.json"
+const items_json_path: String = "res://resources/data/item.json"
+const recipes_json_path: String = "res://resources/data/recipes.json"
 
 var player: Player
+
 var item_types: Array[ItemType]
+var recipes: Array[CraftRecipe]
 
 func _ready() -> void:
 	load_item_types()
+	load_recipes()
 
 func load_item_types():
 	item_types = []
@@ -20,7 +24,25 @@ func load_item_types():
 		
 		item_types.append(item_type)
 		
+func load_recipes():
+	recipes = []
+	var data: Array = JSON.parse_string(FileAccess.open(recipes_json_path, FileAccess.READ).get_as_text())["recipes"]
 	
+	for d in data:
+		var recipe := CraftRecipe.new()
+		recipe.ingredients = []
+		recipe.output = ItemInstance.new()
+		
+		recipe.output.idx = d["output"]["idx"]
+		recipe.output.count = d["output"]["count"]
+		
+		for i in d["ingredients"]:
+			var ing := ItemInstance.new()
+			ing.idx = i["idx"]
+			ing.count = i["count"]
+			recipe.ingredients.append(ing)
+
+
 static func get_texture_region_indexed(index: int, width: int, height: int, seperation: int, row: int):
 	var x: int = (index % row)
 	var y: int = roundi(index / row)
@@ -29,6 +51,14 @@ static func get_texture_region_indexed(index: int, width: int, height: int, sepe
 	y = height * y + seperation * (y - 1)
 
 	return Rect2i(x, y, width, height)
+	
+class CraftRecipe:
+	var ingredients: Array[ItemInstance]
+	var output: ItemInstance
+	
+class ItemInstance:
+	var idx: int
+	var count: int
 	
 class ItemType:
 	var item_name: String

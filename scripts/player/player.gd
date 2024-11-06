@@ -104,6 +104,8 @@ func _player_visual(frame_direction: float, in_air: bool) -> void:
 
 	if sprite.animation != IDLE_ANIM:
 		sprite.speed_scale = velocity.length_squared() / (speed * 100) ** 2
+	else:
+		sprite.speed_scale = 1
 		
 	run_particle.emitting = not in_air
 	run_particle.amount = roundi(64 * inverse_lerp(0, (speed * 100) ** 2, velocity.length_squared())) + 1

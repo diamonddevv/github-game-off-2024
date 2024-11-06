@@ -18,7 +18,9 @@ func _ready() -> void:
 
 func _on_pickup_box_body_entered(body: Node2D):
 	if body is Player:
-		(body as Player).player_inventory.add_item(item_idx, 1)
+		var actual_added = (body as Player).player_inventory.add_item(item_idx, 1)
+		if actual_added == 0:
+			return
 		queue_free()
 
 		

@@ -1,0 +1,17 @@
+{
+	"recipes": [
+		{
+			"name": "Tin to Aluminium",
+			"ingredients": [
+				{
+					"idx": 0,
+					"count" : 2
+				}
+			],
+			"output": {
+				"idx": 1,
+				"count": 1
+			}
+		}
+	]
+}

@@ -36,3 +36,6 @@ shape = SubResource("RectangleShape2D_srnl2")
 
 [node name="Item" parent="." instance=ExtResource("3_jimpc")]
 position = Vector2(-616, -121)
+
+[node name="Item2" parent="." instance=ExtResource("3_jimpc")]
+position = Vector2(-524, -119)

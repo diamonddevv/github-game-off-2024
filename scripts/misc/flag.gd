@@ -14,6 +14,6 @@ func _ready() -> void:
 func set_flag(index: int) -> void:
 	flag_bg.texture = flag_bg.texture.duplicate()
 	
-	(flag_bg.texture as AtlasTexture).region = GlobalManagerAutoloaded.get_texture_region_indexed(
+	(flag_bg.texture as AtlasTexture).region = _GlobalManager.get_texture_region_indexed(
 		index, FLAGS_W, FLAGS_H, FLAGS_SEP, FLAGS_ROW
 	)

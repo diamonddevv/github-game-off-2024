@@ -7,6 +7,8 @@ const FALL_ANIM := &"fall"
 const JUMP_ANIM := &"jump"
 const CROUCH_ANIM := &"crouch"
 
+static var overlay_prefab: PackedScene = ResourceLoader.load("res://prefabs/ui/overlay.tscn")
+
 @export var speed: float = 2.0
 @export var jump_force: float = 6.0
 @export var gravity: float = 10.0
@@ -21,6 +23,8 @@ const CROUCH_ANIM := &"crouch"
 
 @onready var player_inventory: Inventory = $Inventory
 
+var overlay: Overlay
+
 var _jumps_left: int = 0
 var _last_on_ground: bool = false
 var _last_direction: float = 0
@@ -28,6 +32,11 @@ var _crouching: bool = false
 
 func _ready() -> void:
 	GlobalManager.player = self
+	
+	overlay = overlay_prefab.instantiate()
+	overlay.inventory = player_inventory
+	
+	get_tree().get_current_scene().add_child.call_deferred(overlay)
 
 func _physics_process(delta: float) -> void:
 	_player_movement(delta)
@@ -38,9 +47,7 @@ func _physics_process(delta: float) -> void:
 	_last_on_ground = is_on_floor()
 	
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed(&"open_player_inventory"):
-		if not player_inventory.screen_open:
-			player_inventory.open_inventory_screen()
+	pass
 	
 func get_grav() -> float:
 	if velocity.y > 0:

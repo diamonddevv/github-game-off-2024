@@ -2,6 +2,7 @@ shader_type canvas_item;
 
 uniform bool enabled = false;
 uniform float rotate_speed : hint_range(0, 2, 0.1);
+uniform vec4 region;
 
 vec2 rotate(vec2 uv, vec2 pivot, float angle)
 {
@@ -16,7 +17,9 @@ vec2 rotate(vec2 uv, vec2 pivot, float angle)
 
 void fragment() {
 	if (enabled) {
+		
 		vec3 tint = vec3(rotate(UV, vec2(0.5), TIME * rotate_speed), 1);
 		COLOR = texture(TEXTURE, UV) * vec4(tint, 1);
+
 	}
 }

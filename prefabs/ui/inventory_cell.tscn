@@ -1,17 +1,19 @@
 [gd_scene load_steps=6 format=3 uid="uid://lmgyv58cbri8"]
 
-[ext_resource type="Script" path="res://scripts/inventory/inventory_cell.gd" id="1_7nuiu"]
-[ext_resource type="Shader" path="res://resources/shader/glint.gdshader" id="1_gwowi"]
+[ext_resource type="Script" path="res://scripts/game/overlay/inventory_cell.gd" id="1_7nuiu"]
+[ext_resource type="Shader" path="res://resources/shader/selected.gdshader" id="1_gwowi"]
 [ext_resource type="Texture2D" uid="uid://cginbigbdj7vb" path="res://resources/texture/items.png" id="2_i6647"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1nd3r"]
 shader = ExtResource("1_gwowi")
-shader_parameter/enabled = false
+shader_parameter/enabled = true
 shader_parameter/rotate_speed = 2.0
+shader_parameter/region = Vector4(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_161mf"]
 atlas = ExtResource("2_i6647")
 region = Rect2(0, 0, 16, 16)
+filter_clip = true
 
 [node name="InventoryCell" type="Control"]
 custom_minimum_size = Vector2(50, 50)

@@ -1,5 +1,5 @@
 extends Node
-class_name GlobalManagerAutoloaded
+class_name _GlobalManager
 
 const items_json_path: String = "res://resources/data/item.json"
 const recipes_json_path: String = "res://resources/data/recipes.json"
@@ -41,7 +41,7 @@ func load_recipes():
 			ing.idx = i["idx"]
 			ing.count = i["count"]
 			recipe.ingredients.append(ing)
-
+	
 
 static func get_texture_region_indexed(index: int, width: int, height: int, seperation: int, row: int) -> Rect2i:
 	var x: int = (index % row)

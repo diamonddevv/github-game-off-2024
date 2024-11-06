@@ -1,16 +1,14 @@
 extends CanvasLayer
-class_name InventoryScreen
-
-signal closed()
+class_name Overlay
 
 var inventory: Inventory
-var selected_idx: int = 0
+var selected_idx: int = -1
 var inv_cells: Array[InventoryCell]
 
 static var inv_cell_prefab: PackedScene = ResourceLoader.load("res://prefabs/ui/inventory_cell.tscn")
 
-@onready var capacity: Label = $MarginContainer/VBoxContainer/Label
-@onready var cells: GridContainer = $MarginContainer/VBoxContainer/Cells
+@onready var capacity: Label = $Inventory/VBoxContainer/Label
+@onready var cells: GridContainer = $Inventory/VBoxContainer/Cells
 
 
 func _ready() -> void:
@@ -19,9 +17,6 @@ func _ready() -> void:
 	inventory.updated.connect(_populate)
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed(&"open_player_inventory"):
-		close()
-	
 	
 	if len(inv_cells) > 0:
 		inv_cells[selected_idx].selected = false
@@ -35,12 +30,15 @@ func _process(_delta: float) -> void:
 		
 		inv_cells[selected_idx].selected = true
 
+	capacity.text = "%s/%s | %s" % [inventory.capacity, inventory.max_size, _get_item_name()]
+
 func _populate() -> void:
 	inv_cells = []
+	
+	
 	for c in cells.get_children():
 		c.queue_free()
 	
-	capacity.text = "%s/%s" % [inventory.capacity, inventory.max_size]
 	for item_idx in inventory.items.keys():
 		var cell := _make_cell(item_idx, inventory.items[item_idx])
 		inv_cells.append(cell)
@@ -48,13 +46,14 @@ func _populate() -> void:
 
 func _make_cell(item_idx: int, count: int) -> InventoryCell:
 	var cell: InventoryCell = inv_cell_prefab.instantiate()
-	var type: GlobalManagerAutoloaded.ItemType = GlobalManager.item_types[item_idx]
 	
-	cell.texture_index_to_set = type.item_texture_index
+	cell.item_idx = item_idx
 	cell.count_to_set = count
 
 	return cell
 
-func close():
-	closed.emit()
-	self.queue_free()
+func _get_item_name() -> String:
+	if selected_idx < 0:
+		return ""
+	else:
+		return GlobalManager.item_types[inv_cells[selected_idx].item_idx].item_name

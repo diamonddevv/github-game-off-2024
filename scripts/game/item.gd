@@ -26,9 +26,9 @@ func _on_pickup_box_body_entered(body: Node2D):
 		
 	
 func _set_item() -> void:
-	var data: GlobalManagerAutoloaded.ItemType = GlobalManager.item_types[item_idx]
+	var data: _GlobalManager.ItemType = GlobalManager.item_types[item_idx]
 	_set_item_texture(data.item_texture_index)
 
 func _set_item_texture(index: int) -> void:
 	sprite.texture = sprite.texture.duplicate()
-	(sprite.texture as AtlasTexture).region = GlobalManagerAutoloaded.get_texture_region_indexed(index, ITEMS_W, ITEMS_H, ITEMS_SEP, ITEMS_ROW)
+	(sprite.texture as AtlasTexture).region = _GlobalManager.get_texture_region_indexed(index, ITEMS_W, ITEMS_H, ITEMS_SEP, ITEMS_ROW)

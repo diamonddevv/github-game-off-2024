@@ -1,7 +1,7 @@
 extends Node
 class_name Inventory
 
-static var inv_screen_prefab: PackedScene = ResourceLoader.load("res://prefabs/ui/inventory_screen.tscn")
+
 
 signal updated()
 
@@ -13,15 +13,6 @@ var screen_open: bool = false
 
 func _ready() -> void:
 	items = {}
-	
-func open_inventory_screen() -> void:
-	var screen: InventoryScreen = inv_screen_prefab.instantiate()
-	screen.inventory = self
-	get_tree().get_current_scene().add_child(screen)
-	
-	screen_open = true
-	await screen.closed
-	screen_open = false
 
 	
 func add_item(item_idx: int, count: int) -> int:

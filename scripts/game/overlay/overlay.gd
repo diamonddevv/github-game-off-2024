@@ -4,12 +4,15 @@ class_name Overlay
 var inventory: Inventory
 var selected_idx: int = -1
 var inv_cells: Array[InventoryCell]
+var can_craft: bool
+var crafting_open: bool
 
 static var inv_cell_prefab: PackedScene = ResourceLoader.load("res://prefabs/ui/inventory_cell.tscn")
 
 @onready var capacity: Label = $Inventory/VBoxContainer/Label
 @onready var cells: GridContainer = $Inventory/VBoxContainer/Cells
 
+@onready var crafting_root: CraftingUi = $Crafting
 
 func _ready() -> void:
 	_populate()
@@ -17,6 +20,7 @@ func _ready() -> void:
 	inventory.updated.connect(_populate)
 
 func _process(_delta: float) -> void:
+
 	
 	if len(inv_cells) > 0:
 		inv_cells[selected_idx].selected = false
@@ -31,10 +35,14 @@ func _process(_delta: float) -> void:
 		inv_cells[selected_idx].selected = true
 
 	capacity.text = "%s/%s | %s" % [inventory.capacity, inventory.max_size, _get_item_name()]
+	
+	if can_craft and not crafting_open:
+		capacity.text += " | Interact to Craft"
+	
+	crafting_root.visible = crafting_open
 
 func _populate() -> void:
 	inv_cells = []
-	
 	
 	for c in cells.get_children():
 		c.queue_free()

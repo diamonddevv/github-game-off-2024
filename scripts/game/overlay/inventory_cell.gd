@@ -4,6 +4,8 @@ class_name InventoryCell
 @onready var texture_rect: TextureRect = $CenterContainer/Texture
 @onready var label: Label = $Label
 
+var show_count: bool = true
+
 var selected: bool
 var item_idx: int
 var count_to_set: int
@@ -19,5 +21,6 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	label.visible = show_count
 	(texture_rect.material as ShaderMaterial).set_shader_parameter(&"enabled", selected)
 	

@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0485n2y1rllf"]
+
+[ext_resource type="Script" path="res://scripts/game/overlay/crafting_cell.gd" id="1_oc6gm"]
+[ext_resource type="Texture2D" uid="uid://cginbigbdj7vb" path="res://resources/texture/items.png" id="1_xmhk4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvkcx"]
+atlas = ExtResource("1_xmhk4")
+region = Rect2(0, 0, 16, 16)
+
+[node name="CraftingCell" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_oc6gm")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -400.0
+offset_bottom = 100.0
+grow_horizontal = 0
+color = Color(0, 1, 0, 1)
+
+[node name="VBoxContainer" type="HBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_right = 400.0
+offset_bottom = 75.0
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_xvkcx")
+expand_mode = 2

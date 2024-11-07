@@ -6,7 +6,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1nd3r"]
 shader = ExtResource("1_gwowi")
-shader_parameter/enabled = true
+shader_parameter/enabled = false
 shader_parameter/rotate_speed = 2.0
 shader_parameter/region = Vector4(0, 0, 16, 16)
 

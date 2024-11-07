@@ -27,3 +27,4 @@ shape = SubResource("RectangleShape2D_hpit7")
 shape = SubResource("RectangleShape2D_t5gfw")
 
 [connection signal="body_entered" from="ReachableRegion" to="." method="_on_reachable_region_body_entered"]
+[connection signal="body_exited" from="ReachableRegion" to="." method="_on_reachable_region_body_exited"]

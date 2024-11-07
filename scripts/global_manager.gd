@@ -30,6 +30,7 @@ func load_recipes():
 	
 	for d in data:
 		var recipe := CraftRecipe.new()
+		recipe.recipe_name = d["name"]
 		recipe.ingredients = []
 		recipe.output = ItemInstance.new()
 		
@@ -41,6 +42,8 @@ func load_recipes():
 			ing.idx = i["idx"]
 			ing.count = i["count"]
 			recipe.ingredients.append(ing)
+			
+		recipes.append(recipe)
 	
 
 static func get_texture_region_indexed(index: int, width: int, height: int, seperation: int, row: int) -> Rect2i:
@@ -53,6 +56,7 @@ static func get_texture_region_indexed(index: int, width: int, height: int, sepe
 	return Rect2i(x, y, width, height)
 	
 class CraftRecipe:
+	var recipe_name: String
 	var ingredients: Array[ItemInstance]
 	var output: ItemInstance
 	

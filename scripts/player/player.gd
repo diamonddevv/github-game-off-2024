@@ -7,7 +7,7 @@ const FALL_ANIM := &"fall"
 const JUMP_ANIM := &"jump"
 const CROUCH_ANIM := &"crouch"
 
-static var overlay_prefab: PackedScene = ResourceLoader.load("res://prefabs/ui/overlay.tscn")
+
 
 @export var speed: float = 2.0
 @export var jump_force: float = 6.0
@@ -33,7 +33,7 @@ var _crouching: bool = false
 func _ready() -> void:
 	GlobalManager.player = self
 	
-	overlay = overlay_prefab.instantiate()
+	overlay = Prefabs.overlay.instantiate()
 	overlay.inventory = player_inventory
 	
 	get_tree().get_current_scene().add_child.call_deferred(overlay)
@@ -47,7 +47,22 @@ func _physics_process(delta: float) -> void:
 	_last_on_ground = is_on_floor()
 	
 func _process(_delta: float) -> void:
-	pass
+	var item_idx: int = overlay.get_item_idx()
+	
+	if Input.is_action_just_pressed("throw_item") and item_idx >= 0:
+		
+		var item: Item = Prefabs.item.instantiate()
+		item.item_idx = item_idx
+		item.pickup_timer = 0.1
+		
+		get_tree().get_current_scene().add_child(item)
+		
+		item.global_position = global_position
+		
+		if not _crouching:
+			item.apply_central_force(Vector2(1 * _last_direction, -1) * 35_000)
+		
+		player_inventory.remove_item(item_idx, 1)
 	
 func get_grav() -> float:
 	if velocity.y > 0:

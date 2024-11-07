@@ -50,8 +50,8 @@ static func get_texture_region_indexed(index: int, width: int, height: int, sepe
 	var x: int = (index % row)
 	var y: int = roundi(index / row)
 
-	x = width * x + seperation * (x - 1)
-	y = height * y + seperation * (y - 1)
+	x = width * x + seperation * max(0, x - 1)
+	y = height * y + seperation * max(0, y - 1)
 
 	return Rect2i(x, y, width, height)
 	

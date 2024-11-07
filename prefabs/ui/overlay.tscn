@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctegtd3q4r0il"]
+[gd_scene load_steps=5 format=3 uid="uid://ctegtd3q4r0il"]
 
 [ext_resource type="Script" path="res://scripts/game/overlay/overlay.gd" id="1_eyi0l"]
-[ext_resource type="Script" path="res://scripts/game/overlay/crafting.gd" id="2_h0lmu"]
+[ext_resource type="Script" path="res://scripts/game/overlay/crafting_ui.gd" id="2_h0lmu"]
+[ext_resource type="PackedScene" uid="uid://lmgyv58cbri8" path="res://prefabs/ui/inventory_cell.tscn" id="2_n2db1"]
+[ext_resource type="PackedScene" uid="uid://d0485n2y1rllf" path="res://prefabs/ui/crafting_cell.tscn" id="3_gulbh"]
 
 [node name="Overlay" type="CanvasLayer"]
 script = ExtResource("1_eyi0l")
@@ -23,7 +25,84 @@ text = "0/0 | "
 
 [node name="Cells" type="GridContainer" parent="Inventory/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 24
 columns = 5
+
+[node name="InventoryCell" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell2" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell3" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell4" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell5" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell6" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell7" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell8" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell9" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell10" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell11" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell12" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell13" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell14" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell15" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell16" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell17" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell18" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell19" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell20" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell21" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell22" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell23" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell24" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
+
+[node name="InventoryCell25" parent="Inventory/VBoxContainer/Cells" instance=ExtResource("2_n2db1")]
+layout_mode = 2
 
 [node name="Crafting" type="MarginContainer" parent="."]
 anchors_preset = 1
@@ -43,4 +122,18 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Crafting/VBoxContainer"]
 layout_mode = 2
-text = "Crafting:"
+text = "Recipe Name | Crafting"
+horizontal_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Crafting/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 132
+
+[node name="CraftingCell" parent="Crafting/VBoxContainer/VBoxContainer" instance=ExtResource("3_gulbh")]
+layout_mode = 2
+
+[node name="CraftingCell2" parent="Crafting/VBoxContainer/VBoxContainer" instance=ExtResource("3_gulbh")]
+layout_mode = 2
+
+[node name="CraftingCell3" parent="Crafting/VBoxContainer/VBoxContainer" instance=ExtResource("3_gulbh")]
+layout_mode = 2

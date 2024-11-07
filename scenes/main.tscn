@@ -52,11 +52,26 @@ texture = ExtResource("2_4hfnb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_srnl2")
 
-[node name="Item" parent="." instance=ExtResource("3_jimpc")]
-position = Vector2(-583, -147)
-
 [node name="CraftingStation" parent="." instance=ExtResource("4_bf0qj")]
 position = Vector2(-1090, -124)
 
 [node name="Player" parent="." instance=ExtResource("1_fh0k4")]
 position = Vector2(-8, -219)
+
+[node name="Item" parent="." instance=ExtResource("3_jimpc")]
+position = Vector2(-461, -273)
+
+[node name="Item2" parent="." instance=ExtResource("3_jimpc")]
+position = Vector2(-741, -183)
+
+[node name="Item3" parent="." instance=ExtResource("3_jimpc")]
+position = Vector2(-604, -196)
+
+[node name="Item4" parent="." instance=ExtResource("3_jimpc")]
+position = Vector2(-504, -189)
+
+[node name="Item5" parent="." instance=ExtResource("3_jimpc")]
+position = Vector2(-591, -318)
+
+[node name="Item6" parent="." instance=ExtResource("3_jimpc")]
+position = Vector2(-698, -278)

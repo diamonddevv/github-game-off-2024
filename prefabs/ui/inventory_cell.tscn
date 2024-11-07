@@ -4,11 +4,11 @@
 [ext_resource type="Shader" path="res://resources/shader/selected.gdshader" id="1_gwowi"]
 [ext_resource type="Texture2D" uid="uid://cginbigbdj7vb" path="res://resources/texture/items.png" id="2_i6647"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1nd3r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_px6c2"]
 shader = ExtResource("1_gwowi")
 shader_parameter/enabled = false
-shader_parameter/rotate_speed = 2.0
-shader_parameter/region = Vector4(0, 0, 16, 16)
+shader_parameter/rotate_speed = null
+shader_parameter/region = null
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_161mf"]
 atlas = ExtResource("2_i6647")
@@ -24,30 +24,36 @@ offset_bottom = 50.0
 scale = Vector2(2, 2)
 script = ExtResource("1_7nuiu")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-custom_minimum_size = Vector2(50, 50)
+[node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_px6c2")
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 0
-offset_right = 50.0
-offset_bottom = 50.0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Texture" type="TextureRect" parent="CenterContainer"]
-material = SubResource("ShaderMaterial_1nd3r")
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="Texture" type="TextureRect" parent="Panel/CenterContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = SubResource("AtlasTexture_161mf")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -10.5
-offset_top = -20.5
-offset_right = 3.5
-offset_bottom = 13.5
+offset_left = -13.0
+offset_top = -34.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "4"
+text = "x"
+horizontal_alignment = 1
+vertical_alignment = 1

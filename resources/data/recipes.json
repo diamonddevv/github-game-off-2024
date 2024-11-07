@@ -12,6 +12,19 @@
 				"idx": 1,
 				"count": 1
 			}
+		},
+		{
+			"name": "Aluminium to Iron",
+			"ingredients": [
+				{
+					"idx": 1,
+					"count" : 3
+				}
+			],
+			"output": {
+				"idx": 4,
+				"count": 10
+			}
 		}
 	]
 }

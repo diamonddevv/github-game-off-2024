@@ -1,4 +1,4 @@
-extends Node2D
+extends RigidBody2D
 class_name Item
 
 const ITEMS_ROW: int = 4
@@ -11,17 +11,23 @@ const ITEMS_SEP: int = 1
 
 @export var item_idx: int = 0
 
+var pickup_timer: float = 0
+
 func _ready() -> void:
 	_set_item()
-
+	
+func _process(delta: float) -> void:
+	if pickup_timer > 0:
+		pickup_timer -= delta
 
 
 func _on_pickup_box_body_entered(body: Node2D):
 	if body is Player:
-		var actual_added = (body as Player).player_inventory.add_item(item_idx, 1)
-		if actual_added == 0:
-			return
-		queue_free()
+		if pickup_timer <= 0:
+			var actual_added = (body as Player).player_inventory.add_item(item_idx, 1)
+			if actual_added == 0:
+				return
+			queue_free()
 
 		
 	

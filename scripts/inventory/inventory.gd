@@ -1,8 +1,6 @@
 extends Node
 class_name Inventory
 
-
-
 signal updated()
 
 @export var max_size: int = 32
@@ -35,3 +33,18 @@ func add_item(item_idx: int, count: int) -> int:
 	updated.emit()
 	return added
 	
+func remove_item(item_idx: int, count: int) -> int:
+	if items.has(item_idx):
+		var act_removed: int = min(items[item_idx], count)
+		
+		items[item_idx] -= act_removed
+		
+		if items[item_idx] <= 0:
+			items.erase(item_idx)
+			
+		updated.emit()
+		
+		capacity -= act_removed
+		return act_removed
+	else:
+		return 0

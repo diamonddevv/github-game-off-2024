@@ -2,43 +2,51 @@
 	"items": [
 		{
 			"texture_idx": 0,
-			"item_name": "Tin"
+			"item_name": "Tin Can"
 		},
 		{
 			"texture_idx": 1,
-			"item_name": "Aluminium"
+			"item_name": "Aluminium Foil"
 		},
 		{
 			"texture_idx": 2,
-			"item_name": "Copper"
+			"item_name": "Copper Ingot"
 		},
 		{
 			"texture_idx": 3,
-			"item_name": "Titanium"
+			"item_name": "Titanium Ingot"
 		},
 		{
 			"texture_idx": 4,
-			"item_name": "Iron"
+			"item_name": "Iron Ingot"
 		},
 		{
 			"texture_idx": 5,
-			"item_name": "Gold"
+			"item_name": "Gold Ingot"
 		},
 		{
 			"texture_idx": 6,
-			"item_name": "Lithium"
+			"item_name": "Lithium Battery"
 		},
 		{
 			"texture_idx": 7,
-			"item_name": "Vanadium"
+			"item_name": "Vanadium Ingot"
 		},
 		{
 			"texture_idx": 8,
-			"item_name": "Silver"
+			"item_name": "Silver Ingot"
 		},
 		{
 			"texture_idx": 9,
-			"item_name": "Chromium"
+			"item_name": "Chromium Ingot"
 		},
+		{
+			"texture_idx": 10,
+			"item_name": "Uranium Ingot"
+		},
+		{
+			"texture_idx": 11,
+			"item_name": "Exhaust Pipe"
+		}
 	]
 }

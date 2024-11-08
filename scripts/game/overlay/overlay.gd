@@ -8,7 +8,6 @@ var can_craft: bool
 var crafting_open: bool
 
 
-
 @onready var capacity: Label = $Inventory/VBoxContainer/Label
 @onready var cells: GridContainer = $Inventory/VBoxContainer/Cells
 
@@ -25,7 +24,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	
 	if len(inv_cells) > 0:
-		inv_cells[selected_idx].selected = false
+		inv_cells[clamp(selected_idx, 0, len(inv_cells) - 1)].selected = false
 		
 		if Input.is_action_just_pressed("inv_left"):
 			selected_idx -= 1

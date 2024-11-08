@@ -60,7 +60,14 @@ func can_craft() -> bool:
 			return false
 	return true
 
-func accept_craft() -> void:
+func accept_craft(player: Player) -> void:
 	for ing: _GlobalManager.ItemInstance in recipe.ingredients:
 		checked_inventory.remove_item(ing.idx, ing.count)
-	checked_inventory.add_item(recipe.output.idx, recipe.output.count)
+	var act_added: int = checked_inventory.add_item(recipe.output.idx, recipe.output.count)
+	
+	var drop: int = recipe.output.count - act_added
+	for i in drop:
+		var item: Item = Prefabs.item.instantiate()
+		item.item_idx = recipe.output.idx
+		item.global_position = player.global_position
+		get_tree().get_current_scene().add_child(item)

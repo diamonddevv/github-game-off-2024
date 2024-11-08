@@ -22,12 +22,12 @@ func add_item(item_idx: int, count: int) -> int:
 	if capacity + count <= max_size:
 		added = count
 	else:
-		added = max_size - capacity
+		added = capacity - count
 	
 	if items.has(item_idx):
-		items[item_idx] += count
+		items[item_idx] += added
 	else:
-		items[item_idx] = count
+		items[item_idx] = added
 	
 	capacity += added
 	updated.emit()

@@ -32,7 +32,7 @@ func _process(_delta: float) -> void:
 		
 		if Input.is_action_just_pressed("accept_craft"):
 			if cells[selected_idx].can_craft():
-				cells[selected_idx].accept_craft()
+				cells[selected_idx].accept_craft(GlobalManager.player)
 		
 	crafting_label.text = "%s | Crafting" % [cells[selected_idx].recipe.recipe_name]
 	

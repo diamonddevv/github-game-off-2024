@@ -10,8 +10,8 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3q60i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8cmr3"]
-radius = 9.0
-height = 23.3333
+radius = 7.33333
+height = 18.0
 
 [node name="Item" type="RigidBody2D"]
 collision_layer = 4

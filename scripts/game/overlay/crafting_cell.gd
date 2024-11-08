@@ -31,6 +31,7 @@ func _ready() -> void:
 
 	if checked_inventory:
 		checked_inventory.updated.connect(_inventory_updated)
+		can_craft()
 	
 
 func _process(_delta: float) -> void:

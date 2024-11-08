@@ -7,7 +7,7 @@ const FALL_ANIM := &"fall"
 const JUMP_ANIM := &"jump"
 const CROUCH_ANIM := &"crouch"
 
-
+signal on_die()
 
 @export var speed: float = 2.0
 @export var jump_force: float = 6.0
@@ -15,6 +15,7 @@ const CROUCH_ANIM := &"crouch"
 @export var max_fall_speed: float = 10.0 
 @export var max_jumps: int = 2
 @export var jump_height_falloff: float = 0.9
+@export var max_health: float = 100
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var jump_particle: CPUParticles2D = $Sprite/JumpParticle
@@ -24,6 +25,7 @@ const CROUCH_ANIM := &"crouch"
 @onready var player_inventory: Inventory = $Inventory
 
 var overlay: Overlay
+var health: float
 
 var _jumps_left: int = 0
 var _last_on_ground: bool = false
@@ -37,6 +39,8 @@ func _ready() -> void:
 	overlay.inventory = player_inventory
 	
 	get_tree().get_current_scene().add_child.call_deferred(overlay)
+	
+	health = max_health
 
 func _physics_process(delta: float) -> void:
 	_player_movement(delta)
@@ -63,11 +67,17 @@ func _process(_delta: float) -> void:
 			item.apply_central_force(Vector2(1 * _last_direction, -1) * 35_000)
 		
 		player_inventory.remove_item(item_idx, 1)
+		
+	if Input.is_action_just_pressed("use_item"):
+		overlay.use_item()
+		
+	if health <= 0:
+		on_die.emit()
 	
 func get_grav() -> float:
 	if velocity.y > 0:
-		return gravity
-	return gravity * 1.4
+		return gravity * EnvironmentManager.current.gravity_modifier
+	return gravity * 1.4 * EnvironmentManager.current.gravity_modifier
 	
 func _player_movement(delta: float) -> void:
 	# gravity

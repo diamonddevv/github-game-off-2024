@@ -26,7 +26,7 @@
 		},
 		{
 			"texture_idx": 6,
-			"item_name": "Lithium Battery"
+			"item_name": "Lithium Ingot"
 		},
 		{
 			"texture_idx": 7,
@@ -47,6 +47,20 @@
 		{
 			"texture_idx": 11,
 			"item_name": "Exhaust Pipe"
+		},
+		{
+			"texture_idx": 12,
+			"item_name": "Battery"
+		},
+		{
+			"texture_idx": 13,
+			"item_name": "Sandwich",
+			"use_action": "eat_sandwich"
+		},
+		{
+			"texture_idx": 14,
+			"item_name": "Acidity Tester",
+			"use_action": "test_acidity"
 		}
 	]
 }

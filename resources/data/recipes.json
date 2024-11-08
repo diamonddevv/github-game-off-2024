@@ -13,5 +13,43 @@
 				"count": 1
 			}
 		},
+		{
+			"name": "Lithium Battery",
+			"ingredients": [
+				{
+					"idx": 6,
+					"count" : 4
+				},
+				{
+					"idx": 4,
+					"count": 2
+				}
+			],
+			"output": {
+				"idx": 12,
+				"count": 1
+			}
+		},
+		{
+			"name": "Acidity Testing Probe",
+			"ingredients": [
+				{
+					"idx": 5,
+					"count": 1
+				},
+				{
+					"idx": 2,
+					"count": 8
+				},
+				{
+					"idx": 12,
+					"count": 3
+				}
+			],
+			"output": {
+				"idx": 14,
+				"count": 1
+			}
+		}
 	]
 }

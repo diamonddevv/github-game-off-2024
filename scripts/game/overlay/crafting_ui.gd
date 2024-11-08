@@ -17,7 +17,7 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	
-	if len(cells) > 0:
+	if len(cells) > 0 and visible:
 		cells[selected_idx].selected = false
 
 		if Input.is_action_just_pressed("craft_nav_up"):
@@ -35,9 +35,12 @@ func _process(_delta: float) -> void:
 				cells[selected_idx].accept_craft(GlobalManager.player)
 		
 	crafting_label.text = "%s | Crafting" % [cells[selected_idx].recipe.recipe_name]
-	
-	
-	
+
+	create_tween().tween_property(
+		crafting_vbox, "position", Vector2(0, (selected_idx * -132.0) + 38), 0.1
+	).set_trans(
+		Tween.TRANS_QUART
+	)
 
 func _populate():
 	cells = []

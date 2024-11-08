@@ -6,6 +6,7 @@ const ITEMS_W: int = 16
 const ITEMS_H: int = 16
 const ITEMS_SEP: int = 1
 
+const USE_ACTION_NONE: String = "none";
 
 @onready var sprite: Sprite2D = $Sprite
 

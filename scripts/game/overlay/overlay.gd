@@ -6,10 +6,12 @@ var selected_idx: int = -1
 var inv_cells: Array[InventoryCell]
 var can_craft: bool
 var crafting_open: bool
+var can_use_this_item: bool
 
 
 @onready var capacity: Label = $Inventory/VBoxContainer/Label
 @onready var cells: GridContainer = $Inventory/VBoxContainer/Cells
+@onready var health: TextureProgressBar = $Health
 
 @onready var crafting_root: CraftingUi = $Crafting
 
@@ -39,8 +41,16 @@ func _process(_delta: float) -> void:
 	
 	if can_craft and not crafting_open:
 		capacity.text += " | Interact to Craft"
+		
+		
+	can_use_this_item = get_can_use_item()
+	if can_use_this_item:
+		capacity.text += " | Can Use"
 	
 	crafting_root.visible = crafting_open
+
+	health.max_value = GlobalManager.player.max_health
+	health.value = GlobalManager.player.health
 
 func _populate() -> void:
 	inv_cells = []
@@ -49,7 +59,7 @@ func _populate() -> void:
 		c.queue_free()
 	
 	for item_idx in inventory.items.keys():
-		var cell := _make_cell(item_idx, inventory.items[item_idx])
+		var cell: InventoryCell = _make_cell(item_idx, inventory.items[item_idx])
 		inv_cells.append(cell)
 		cells.add_child(cell)
 		
@@ -75,3 +85,18 @@ func get_item_idx() -> int:
 		return -1
 	else:
 		return inv_cells[selected_idx].item_idx
+
+
+func get_can_use_item() -> bool:
+	if selected_idx < 0:
+		return false
+	else:
+		return GlobalManager.item_types[get_item_idx()].use_action != Item.USE_ACTION_NONE
+
+		
+func use_item() -> void:
+	if can_use_this_item:
+		ItemUseAction.call(
+			GlobalManager.item_types[get_item_idx()].use_action,
+			self
+		)

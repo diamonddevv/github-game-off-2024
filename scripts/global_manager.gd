@@ -17,10 +17,11 @@ func load_item_types():
 	item_types = []
 	var data: Array = JSON.parse_string(FileAccess.open(items_json_path, FileAccess.READ).get_as_text())["items"]
 	
-	for d in data:
+	for d: Dictionary in data:
 		var item_type = ItemType.new()
 		item_type.item_name = d["item_name"]
 		item_type.item_texture_index = d["texture_idx"]
+		item_type.use_action = d.get("use_action", Item.USE_ACTION_NONE)
 		
 		item_types.append(item_type)
 		
@@ -28,22 +29,35 @@ func load_recipes():
 	recipes = []
 	var data: Array = JSON.parse_string(FileAccess.open(recipes_json_path, FileAccess.READ).get_as_text())["recipes"]
 	
-	for d in data:
+	for d: Dictionary in data:
 		var recipe := CraftRecipe.new()
 		recipe.recipe_name = d["name"]
 		recipe.ingredients = []
 		recipe.output = ItemInstance.new()
 		
 		recipe.output.idx = d["output"]["idx"]
-		recipe.output.count = d["output"]["count"]
+		recipe.output.count = (d["output"] as Dictionary).get("count", 1)
 		
-		for i in d["ingredients"]:
+		for i: Dictionary in d["ingredients"]:
 			var ing := ItemInstance.new()
 			ing.idx = i["idx"]
-			ing.count = i["count"]
+			ing.count = i.get("count", 1)
 			recipe.ingredients.append(ing)
 			
 		recipes.append(recipe)
+		
+	if OS.is_debug_build():
+		for item: ItemType in item_types:
+			var recipe := CraftRecipe.new()
+			
+			recipe.recipe_name = "DEBUG : %s" % item.item_name
+			recipe.ingredients = []
+			recipe.output = ItemInstance.new()
+			recipe.output.idx = item_types.find(item)
+			recipe.output.count = 1
+			
+			recipes.append(recipe)
+		
 	
 
 static func get_texture_region_indexed(index: int, width: int, height: int, seperation: int, row: int) -> Rect2i:
@@ -67,3 +81,4 @@ class ItemInstance:
 class ItemType:
 	var item_name: String
 	var item_texture_index: int
+	var use_action: String

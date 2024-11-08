@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctegtd3q4r0il"]
+[gd_scene load_steps=7 format=3 uid="uid://ctegtd3q4r0il"]
 
 [ext_resource type="Script" path="res://scripts/game/overlay/overlay.gd" id="1_eyi0l"]
 [ext_resource type="Script" path="res://scripts/game/overlay/crafting_ui.gd" id="2_h0lmu"]
 [ext_resource type="PackedScene" uid="uid://lmgyv58cbri8" path="res://prefabs/ui/inventory_cell.tscn" id="2_n2db1"]
 [ext_resource type="PackedScene" uid="uid://d0485n2y1rllf" path="res://prefabs/ui/crafting_cell.tscn" id="3_gulbh"]
+[ext_resource type="Texture2D" uid="uid://b5t5dtao8u56t" path="res://resources/texture/player/status_icons.png" id="5_vfh6x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wr26l"]
+atlas = ExtResource("5_vfh6x")
+region = Rect2(0, 0, 16, 16)
 
 [node name="Overlay" type="CanvasLayer"]
 script = ExtResource("1_eyi0l")
@@ -126,6 +131,7 @@ text = "Recipe Name | Crafting"
 horizontal_alignment = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Crafting/VBoxContainer"]
+z_index = -1
 layout_mode = 2
 theme_override_constants/separation = 132
 
@@ -137,3 +143,19 @@ layout_mode = 2
 
 [node name="CraftingCell3" parent="Crafting/VBoxContainer/VBoxContainer" instance=ExtResource("3_gulbh")]
 layout_mode = 2
+
+[node name="Health" type="TextureProgressBar" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = -115.0
+offset_right = 75.0
+offset_bottom = -75.0
+grow_vertical = 0
+scale = Vector2(2, 2)
+step = 0.1
+value = 50.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = SubResource("AtlasTexture_wr26l")

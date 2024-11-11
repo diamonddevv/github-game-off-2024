@@ -61,3 +61,14 @@
   - 
 - inspired by games like: risk of rain, no mans sky, subnautica
 - not all of this will probably get done this month.
+
+
+## secrets
+- quirks are not immediate on a planet. this gives time for the player to work out what they may be, and prepare
+- quirk types:
+  - weather
+  - gravity
+  - color
+  - available resources
+  - water levels
+  - atmospheric conditions

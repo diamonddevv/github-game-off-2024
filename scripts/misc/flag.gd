@@ -9,7 +9,7 @@ const FLAGS_SEP: int = 1
 @onready var flag_bg: Sprite2D = $Mask/FlagBackground
 
 func _ready() -> void:
-	set_flag(9)
+	set_flag(5)
 
 func set_flag(index: int) -> void:
 	flag_bg.texture = flag_bg.texture.duplicate()

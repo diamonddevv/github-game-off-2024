@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://x1wnb4p14002"]
+[gd_scene load_steps=11 format=3 uid="uid://x1wnb4p14002"]
 
 [ext_resource type="PackedScene" uid="uid://8a2k2x5xwnca" path="res://prefabs/game/player.tscn" id="1_fh0k4"]
 [ext_resource type="Shader" path="res://resources/shader/world_bg.gdshader" id="1_p2fpp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c166ris5i5wey" path="res://resources/texture/icon.svg" id="2_4hfnb"]
 [ext_resource type="PackedScene" uid="uid://cre8hki0xv04h" path="res://prefabs/game/crafting_station.tscn" id="4_bf0qj"]
 [ext_resource type="Shader" path="res://resources/shader/weather.gdshader" id="6_wrrao"]
+[ext_resource type="PackedScene" uid="uid://dxp4mgwpej4dk" path="res://scenes/test_tilemap.tscn" id="7_ut6bo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_82p1v"]
 shader = ExtResource("1_p2fpp")
@@ -92,3 +93,7 @@ offset_bottom = 12500.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
+
+[node name="TestTilemap" parent="." instance=ExtResource("7_ut6bo")]
+position = Vector2(-1840, 403)
+scale = Vector2(10, 10)

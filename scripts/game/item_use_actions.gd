@@ -1,7 +1,7 @@
 ﻿extends Node
 class_name ItemUseActions
 
-func none(overlay: Overlay):
+func none(_overlay: Overlay):
 	pass
 	
 	

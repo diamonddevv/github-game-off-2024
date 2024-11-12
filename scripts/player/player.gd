@@ -51,12 +51,12 @@ func _physics_process(delta: float) -> void:
 	_last_on_ground = is_on_floor()
 	
 func _process(_delta: float) -> void:
-	var item_idx: int = overlay.get_item_idx()
+	var item_id: String = overlay.get_item_idx()
 	
-	if Input.is_action_just_pressed("throw_item") and item_idx >= 0:
+	if Input.is_action_just_pressed("throw_item") and item_id != "":
 		
 		var item: Item = Prefabs.item.instantiate()
-		item.item_idx = item_idx
+		item.item_id = item_id
 		item.pickup_timer = 0.1
 		
 		get_tree().get_current_scene().add_child(item)
@@ -66,7 +66,7 @@ func _process(_delta: float) -> void:
 		if not _crouching:
 			item.apply_central_force(Vector2(1 * _last_direction, -1) * 35_000)
 		
-		player_inventory.remove_item(item_idx, 1)
+		player_inventory.remove_item(item_id, 1)
 		
 	if Input.is_action_just_pressed("use_item"):
 		overlay.use_item()

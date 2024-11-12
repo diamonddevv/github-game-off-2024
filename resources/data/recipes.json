@@ -4,12 +4,12 @@
 			"name": "Tin Can Exhaust Pipe",
 			"ingredients": [
 				{
-					"idx": 0,
+					"id": "can",
 					"count" : 2
 				}
 			],
 			"output": {
-				"idx": 11,
+				"id": "exhaust",
 				"count": 1
 			}
 		},
@@ -17,16 +17,16 @@
 			"name": "Lithium Battery",
 			"ingredients": [
 				{
-					"idx": 6,
+					"id": "ingot_li",
 					"count" : 4
 				},
 				{
-					"idx": 4,
+					"id": "ingot_fe",
 					"count": 2
 				}
 			],
 			"output": {
-				"idx": 12,
+				"id": "battery",
 				"count": 1
 			}
 		},
@@ -34,22 +34,57 @@
 			"name": "Acidity Testing Probe",
 			"ingredients": [
 				{
-					"idx": 5,
+					"id": "can",
 					"count": 1
 				},
 				{
-					"idx": 2,
+					"id": "ingot_cu",
 					"count": 8
 				},
 				{
-					"idx": 12,
+					"id": "battery",
 					"count": 3
 				}
 			],
 			"output": {
-				"idx": 14,
+				"id": "acid_tester",
 				"count": 1
 			}
+		},
+		{
+			"name": "Copper Refinement",
+			"factory": "ore",
+			"symbol": "cu"
+		},
+		{
+			"name": "Titanium Refinement",
+			"factory": "ore",
+			"symbol": "ti"
+		},
+		{
+			"name": "Iron Refinement",
+			"factory": "ore",
+			"symbol": "fe"
+		},
+		{
+			"name": "Gold Refinement",
+			"factory": "ore",
+			"symbol": "au"
+		},
+		{
+			"name": "Lithium Refinement",
+			"factory": "ore",
+			"symbol": "li"
+		},
+		{
+			"name": "Silver Refinement",
+			"factory": "ore",
+			"symbol": "ag"
+		},
+		{
+			"name": "Uranium Refinement",
+			"factory": "ore",
+			"symbol": "u"
 		}
 	]
 }

@@ -13,7 +13,7 @@ func _ready() -> void:
 	items = {}
 
 	
-func add_item(item_idx: int, count: int) -> int:
+func add_item(item_id: String, count: int) -> int:
 	
 	if capacity >= max_size:
 		return 0
@@ -24,23 +24,23 @@ func add_item(item_idx: int, count: int) -> int:
 	else:
 		added = capacity - count
 	
-	if items.has(item_idx):
-		items[item_idx] += added
+	if items.has(item_id):
+		items[item_id] += added
 	else:
-		items[item_idx] = added
+		items[item_id] = added
 	
 	capacity += added
 	updated.emit()
 	return added
 	
-func remove_item(item_idx: int, count: int) -> int:
-	if items.has(item_idx):
-		var act_removed: int = min(items[item_idx], count)
+func remove_item(item_id: String, count: int) -> int:
+	if items.has(item_id):
+		var act_removed: int = min(items[item_id], count)
 		
-		items[item_idx] -= act_removed
+		items[item_id] -= act_removed
 		
-		if items[item_idx] <= 0:
-			items.erase(item_idx)
+		if items[item_id] <= 0:
+			items.erase(item_id)
 			
 		updated.emit()
 		

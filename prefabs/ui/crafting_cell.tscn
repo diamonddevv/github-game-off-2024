@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://d0485n2y1rllf"]
 
 [ext_resource type="Script" path="res://scripts/game/overlay/crafting_cell.gd" id="1_oc6gm"]
-[ext_resource type="Texture2D" uid="uid://cginbigbdj7vb" path="res://resources/texture/items.png" id="1_xmhk4"]
+[ext_resource type="Texture2D" uid="uid://cginbigbdj7vb" path="res://resources/texture/item/items.png" id="1_xmhk4"]
 [ext_resource type="Texture2D" uid="uid://doy81uuw54g6r" path="res://resources/texture/misc/icons.png" id="2_sqwta"]
 [ext_resource type="Shader" path="res://resources/shader/selected.gdshader" id="2_stwcx"]
 [ext_resource type="PackedScene" uid="uid://lmgyv58cbri8" path="res://prefabs/ui/inventory_cell.tscn" id="5_pddr5"]

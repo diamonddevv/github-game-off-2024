@@ -1,66 +1,163 @@
 {
 	"items": [
 		{
+			"item_name": "Tin Can",
+			"id": "can",
+			"atlas": "items",
 			"texture_idx": 0,
-			"item_name": "Tin Can"
+			"use_action": "none"
 		},
 		{
+			"item_name": "Aluminium Foil",
+			"id": "foil",
+			"atlas": "items",
 			"texture_idx": 1,
-			"item_name": "Aluminium Foil"
+			"use_action": "none"
 		},
 		{
+			"item_name": "Exhaust Pipe",
+			"id": "exhaust",
+			"atlas": "items",
 			"texture_idx": 2,
-			"item_name": "Copper Ingot"
+			"use_action": "none"
 		},
 		{
+			"item_name": "Lithium-Ion Battery",
+			"id": "battery",
+			"atlas": "items",
 			"texture_idx": 3,
-			"item_name": "Titanium Ingot"
+			"use_action": "none"
 		},
 		{
-			"texture_idx": 4,
-			"item_name": "Iron Ingot"
-		},
-		{
-			"texture_idx": 5,
-			"item_name": "Gold Ingot"
-		},
-		{
-			"texture_idx": 6,
-			"item_name": "Lithium Ingot"
-		},
-		{
-			"texture_idx": 7,
-			"item_name": "Vanadium Ingot"
-		},
-		{
-			"texture_idx": 8,
-			"item_name": "Silver Ingot"
-		},
-		{
-			"texture_idx": 9,
-			"item_name": "Chromium Ingot"
-		},
-		{
-			"texture_idx": 10,
-			"item_name": "Uranium Ingot"
-		},
-		{
-			"texture_idx": 11,
-			"item_name": "Exhaust Pipe"
-		},
-		{
-			"texture_idx": 12,
-			"item_name": "Battery"
-		},
-		{
-			"texture_idx": 13,
-			"item_name": "Sandwich",
-			"use_action": "eat_sandwich"
-		},
-		{
-			"texture_idx": 14,
 			"item_name": "Acidity Tester",
-			"use_action": "test_acidity"
+			"id": "acid_tester",
+			"atlas": "items",
+			"texture_idx": 4,
+			"use_action": "none"
+		},
+		{
+			"item_name": "Sandwich",
+			"id": "sandwich",
+			"atlas": "items",
+			"texture_idx": 5,
+			"use_action": "eat_food",
+			"use_data": { "heal": 40 }
+		},
+		{
+			"item_name": "Milk",
+			"id": "milk",
+			"atlas": "items",
+			"texture_idx": 7,
+			"use_action": "eat_food",
+			"use_data": { "heal": 3 }
+		},
+		{
+			"item_name": "Cheese",
+			"id": "cheese",
+			"atlas": "items",
+			"texture_idx": 6,
+			"use_action": "eat_food",
+			"use_data": { "heal": 5 }
+		},
+
+		{
+			"item_name": "Copper Ingot",
+			"id": "ingot_cu",
+			"atlas": "metals",
+			"texture_idx": 0,
+			"use_action": "none"
+		},
+		{
+			"item_name": "Titanium Ingot",
+			"id": "ingot_ti",
+			"atlas": "metals",
+			"texture_idx": 1,
+			"use_action": "none"
+		},
+		{
+			"item_name": "Iron Ingot",
+			"id": "ingot_fe",
+			"atlas": "metals",
+			"texture_idx": 2,
+			"use_action": "none"
+		},
+		{
+			"item_name": "Gold Ingot",
+			"id": "ingot_au",
+			"atlas": "metals",
+			"texture_idx": 3,
+			"use_action": "none"
+		},
+		{
+			"item_name": "Lithium Ingot",
+			"id": "ingot_li",
+			"atlas": "metals",
+			"texture_idx": 4,
+			"use_action": "none"
+		},
+		{
+			"item_name": "Silver Ingot",
+			"id": "ingot_ag",
+			"atlas": "metals",
+			"texture_idx": 6,
+			"use_action": "none"
+		},
+		{
+			"item_name": "Uranium Ingot",
+			"id": "ingot_u",
+			"atlas": "metals",
+			"texture_idx": 8,
+			"use_action": "none"
+		},
+
+		{
+			"item_name": "Copper Ore",
+			"id": "ore_cu",
+			"atlas": "ores",
+			"texture_idx": 0,
+			"use_action": "none"
+		},
+		{
+			"item_name": "Titanium Ore",
+			"id": "ore_ti",
+			"atlas": "ores",
+			"texture_idx": 1,
+			"use_action": "none"
+		},
+		{
+			"item_name": "Iron Ore",
+			"id": "ore_fe",
+			"atlas": "ores",
+			"texture_idx": 2,
+			"use_action": "none"
+		},
+		{
+			"item_name": "Gold Ore",
+			"id": "ore_au",
+			"atlas": "ores",
+			"texture_idx": 3,
+			"use_action": "none"
+		},
+		{
+			"item_name": "Lithium Ore",
+			"id": "ore_li",
+			"atlas": "ores",
+			"texture_idx": 4,
+			"use_action": "none"
+		},
+		{
+			"item_name": "Silver Ore",
+			"id": "ore_ag",
+			"atlas": "ores",
+			"texture_idx": 6,
+			"use_action": "none"
+		},
+		{
+			"item_name": "Uranium Ore",
+			"id": "ore_u",
+			"atlas": "ores",
+			"texture_idx": 8,
+			"use_action": "none"
 		}
 	]
 }

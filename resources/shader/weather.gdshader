@@ -20,7 +20,7 @@ uniform float slant : hint_range(-1.0, 1.0) = 0.2;
 
 void fragment() {
 	if (!enabled) discard;
-	
+
 // To control the rainfall from your program comment out the below line and add a new uniform above as:
 // uniform float time = 10000.0;
 // Then update the time uniform from your _physics_process function by adding delta. You can then pause the rainfall by not changing the time uniform.

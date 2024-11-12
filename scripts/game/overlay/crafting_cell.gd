@@ -19,14 +19,12 @@ var checked_inventory: Inventory
 func _ready() -> void:
 	panel.material = panel.material.duplicate()
 	
-	crafted_item.texture = crafted_item.texture.duplicate()
 	can_craft_indicator.texture = can_craft_indicator.texture.duplicate()
 
 	if recipe:
-		crafted_item.texture.region = _GlobalManager.get_texture_region_indexed(
-			GlobalManager.item_types[recipe.output.idx].item_texture_index,
-			Item.ITEMS_W, Item.ITEMS_H, Item.ITEMS_SEP, Item.ITEMS_ROW
-		)
+		var item_type: _GlobalManager.ItemType = GlobalManager.item_types[recipe.output.id]
+
+		crafted_item.texture = Item.get_atlased_item(item_type)
 		crafted_count.text = str(recipe.output.count)
 
 	if checked_inventory:
@@ -44,8 +42,8 @@ func _populate():
 
 	for item: _GlobalManager.ItemInstance in recipe.ingredients:
 		var cell: InventoryCell = Prefabs.inventory_cell.instantiate()
-
-		cell.item_idx = GlobalManager.item_types[item.idx].item_texture_index
+		
+		cell.item_id = item.id
 		cell.count_to_set = item.count
 
 		items.add_child(cell)
@@ -55,20 +53,20 @@ func _inventory_updated():
 		
 func can_craft() -> bool:
 	for ing: _GlobalManager.ItemInstance in recipe.ingredients:
-		if not checked_inventory.items.has(ing.idx):
+		if not checked_inventory.items.has(ing.id):
 			return false
-		if checked_inventory.items[ing.idx] < ing.count:
+		if checked_inventory.items[ing.id] < ing.count:
 			return false
 	return true
 
 func accept_craft(player: Player) -> void:
 	for ing: _GlobalManager.ItemInstance in recipe.ingredients:
-		checked_inventory.remove_item(ing.idx, ing.count)
-	var act_added: int = checked_inventory.add_item(recipe.output.idx, recipe.output.count)
+		checked_inventory.remove_item(ing.id, ing.count)
+	var act_added: int = checked_inventory.add_item(recipe.output.id, recipe.output.count)
 	
 	var drop: int = recipe.output.count - act_added
 	for i in drop:
 		var item: Item = Prefabs.item.instantiate()
-		item.item_idx = recipe.output.idx
+		item.item_id = recipe.output.id
 		item.global_position = player.global_position
 		get_tree().get_current_scene().add_child(item)

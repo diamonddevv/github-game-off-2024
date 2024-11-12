@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/game/overlay/inventory_cell.gd" id="1_7nuiu"]
 [ext_resource type="Shader" path="res://resources/shader/selected.gdshader" id="1_gwowi"]
-[ext_resource type="Texture2D" uid="uid://cginbigbdj7vb" path="res://resources/texture/items.png" id="2_i6647"]
+[ext_resource type="Texture2D" uid="uid://cginbigbdj7vb" path="res://resources/texture/item/items.png" id="2_i6647"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_px6c2"]
 shader = ExtResource("1_gwowi")

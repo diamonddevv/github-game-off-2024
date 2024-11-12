@@ -8,17 +8,15 @@ class_name InventoryCell
 var show_count: bool = true
 
 var selected: bool
-var item_idx: int
+var item_id: String
 var count_to_set: int
 
 func _ready() -> void:
-	texture_rect.texture = texture_rect.texture.duplicate()
 	panel.material = panel.material.duplicate()
 	
-	(texture_rect.texture as AtlasTexture).region = GlobalManager.get_texture_region_indexed(
-		GlobalManager.item_types[item_idx].item_texture_index, Item.ITEMS_W, Item.ITEMS_H, Item.ITEMS_SEP, Item.ITEMS_ROW
-	)
-	label.text = str(count_to_set)
+	if item_id:
+		texture_rect.texture = Item.get_atlased_item(GlobalManager.item_types[item_id])
+		label.text = str(count_to_set)
 
 
 func _process(delta: float) -> void:

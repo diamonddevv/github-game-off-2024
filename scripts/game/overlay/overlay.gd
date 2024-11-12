@@ -58,18 +58,18 @@ func _populate() -> void:
 	for c in cells.get_children():
 		c.queue_free()
 	
-	for item_idx in inventory.items.keys():
-		var cell: InventoryCell = _make_cell(item_idx, inventory.items[item_idx])
+	for item_id in inventory.items.keys():
+		var cell: InventoryCell = _make_cell(item_id, inventory.items[item_id])
 		inv_cells.append(cell)
 		cells.add_child(cell)
 		
 	if len(inv_cells) <= 0:
 		selected_idx = -1
 
-func _make_cell(item_idx: int, count: int) -> InventoryCell:
+func _make_cell(item_id: String, count: int) -> InventoryCell:
 	var cell: InventoryCell = Prefabs.inventory_cell.instantiate()
 	
-	cell.item_idx = item_idx
+	cell.item_id = item_id
 	cell.count_to_set = count
 
 	return cell
@@ -80,11 +80,11 @@ func _get_item_name() -> String:
 	else:
 		return GlobalManager.item_types[get_item_idx()].item_name
 
-func get_item_idx() -> int:
+func get_item_idx() -> String:
 	if selected_idx < 0:
-		return -1
+		return ""
 	else:
-		return inv_cells[selected_idx].item_idx
+		return inv_cells[selected_idx].item_id
 
 
 func get_can_use_item() -> bool:
@@ -98,5 +98,5 @@ func use_item() -> void:
 	if can_use_this_item:
 		ItemUseAction.call(
 			GlobalManager.item_types[get_item_idx()].use_action,
-			self
+			self, GlobalManager.item_types[get_item_idx()].use_data
 		)

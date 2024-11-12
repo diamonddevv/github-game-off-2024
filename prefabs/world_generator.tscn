@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtv38xksy3k8t"]
+
+[ext_resource type="Script" path="res://scripts/game/environment/world_generator.gd" id="1_mraq1"]
+[ext_resource type="TileSet" uid="uid://swxs527hgu2a" path="res://resources/tileset/test.tres" id="2_cvd6b"]
+
+[node name="WorldGenerator" type="Node2D"]
+scale = Vector2(10, 10)
+script = ExtResource("1_mraq1")
+tileset = ExtResource("2_cvd6b")

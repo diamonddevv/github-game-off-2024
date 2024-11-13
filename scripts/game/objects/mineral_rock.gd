@@ -5,9 +5,20 @@ signal harvested_from()
 signal on_destroyed()
 
 @onready var reachable_region: Area2D = $ReachableRegion
+@onready var sprite: Sprite2D = $Sprite2D
 
 @export var item_id: String = "ore_cu"
 @export var create_count: int
+
+static var mineral_symbols: Dictionary = {
+	"cu": Color.hex(0xB88A5BFF), 
+	"ti": Color.hex(0x8487ADFF), 
+	"fe": Color.hex(0x8487ADFF),
+	"au": Color.hex(0x8487ADFF),
+	"li": Color.hex(0x8487ADFF),
+	"ag": Color.hex(0xCAC9CFFF),
+	"u":  Color.hex(0xACDAACFF)
+}
 
 var harvests_left: int = 0
 
@@ -20,6 +31,16 @@ func _process(_delta: float) -> void:
 
 			if Input.is_action_just_pressed("interact"):
 				_on_harvest()	
+
+	(sprite.material as ShaderMaterial).set_shader_parameter(&"cracking", float(harvests_left) / float(create_count))
+
+func set_random_rock(random: RandomNumberGenerator):
+	var key: String = mineral_symbols.keys()[random.randi_range(0, mineral_symbols.keys().size() - 1)]
+	item_id = "ore_" + key
+	create_count = random.randi_range(5, 16)
+	harvests_left = create_count
+	sprite.self_modulate = mineral_symbols[key]
+	
 
 func _on_harvest():
 	harvested_from.emit()

@@ -5,11 +5,14 @@ const items_json_path: String = "res://resources/data/item.json"
 const recipes_json_path: String = "res://resources/data/recipes.json"
 
 var player: Player
+var world_generator: _WorldGenerator
 
 var item_types: Dictionary # string to ItemType
 var recipes: Array[CraftRecipe]
 
 func _ready() -> void:
+	world_generator = get_tree().root.get_node("WorldGenerator");
+	
 	load_item_types()
 	load_recipes()
 

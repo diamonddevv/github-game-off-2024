@@ -1,33 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://x1wnb4p14002"]
+[gd_scene load_steps=6 format=3 uid="uid://x1wnb4p14002"]
 
 [ext_resource type="PackedScene" uid="uid://8a2k2x5xwnca" path="res://prefabs/game/player.tscn" id="1_fh0k4"]
 [ext_resource type="Shader" path="res://resources/shader/world_bg.gdshader" id="1_p2fpp"]
 [ext_resource type="Script" path="res://scripts/game/main_manager.gd" id="1_sv1t4"]
 [ext_resource type="PackedScene" uid="uid://cre8hki0xv04h" path="res://prefabs/game/crafting_station.tscn" id="4_bf0qj"]
-[ext_resource type="Shader" path="res://resources/shader/weather.gdshader" id="6_wrrao"]
-[ext_resource type="PackedScene" uid="uid://ctdphhxd33sj" path="res://prefabs/game/mineral_rock.tscn" id="7_ec6ov"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_82p1v"]
 shader = ExtResource("1_p2fpp")
 shader_parameter/bg_color = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s305f"]
-shader = ExtResource("6_wrrao")
-shader_parameter/enabled = false
-shader_parameter/rain_amount = 15000.0
-shader_parameter/near_rain_length = 0.05
-shader_parameter/far_rain_length = 0.01
-shader_parameter/near_rain_width = 1.0
-shader_parameter/far_rain_width = 0.5
-shader_parameter/near_rain_transparency = 0.45
-shader_parameter/far_rain_transparency = 0.35
-shader_parameter/rain_color = Color(0.8, 0.8, 0.8, 1)
-shader_parameter/base_rain_speed = 0.1
-shader_parameter/additional_rain_speed = 0.1
-shader_parameter/slant = 0.2
-
 [node name="main" type="Node2D"]
 script = ExtResource("1_sv1t4")
+rocks = 20
 
 [node name="background" type="ColorRect" parent="."]
 z_index = -10
@@ -48,27 +32,7 @@ color = Color(0, 0, 0, 1)
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
 [node name="CraftingStation" parent="." instance=ExtResource("4_bf0qj")]
-position = Vector2(-1090, -124)
+z_index = -2
+position = Vector2(500, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_fh0k4")]
-position = Vector2(-8, -219)
-
-[node name="RainOverlay" type="ColorRect" parent="."]
-z_index = 10
-material = SubResource("ShaderMaterial_s305f")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12500.0
-offset_top = -12500.0
-offset_right = 12500.0
-offset_bottom = 12500.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
-
-[node name="MineralRock" parent="." instance=ExtResource("7_ec6ov")]
-position = Vector2(71, 254)
-create_count = 20

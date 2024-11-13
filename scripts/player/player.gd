@@ -41,6 +41,10 @@ func _ready() -> void:
 	get_tree().get_current_scene().add_child.call_deferred(overlay)
 	
 	health = max_health
+	
+
+	global_position = GlobalManager.world_generator.snap_to_tilemap_top(global_position)
+	
 
 func _physics_process(delta: float) -> void:
 	_player_movement(delta)
@@ -73,12 +77,18 @@ func _process(_delta: float) -> void:
 		
 	if health <= 0:
 		on_die.emit()
+		die()
 	
 func get_grav() -> float:
 	if velocity.y > 0:
 		return gravity * EnvironmentManager.current.gravity_modifier
 	return gravity * 1.4 * EnvironmentManager.current.gravity_modifier
 	
+	
+func die() -> void:
+	print("player died")
+	get_tree().quit()
+
 func _player_movement(delta: float) -> void:
 	# gravity
 	if not is_on_floor():

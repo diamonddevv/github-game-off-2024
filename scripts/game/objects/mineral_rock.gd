@@ -13,9 +13,9 @@ signal on_destroyed()
 static var mineral_symbols: Dictionary = {
 	"cu": Color.hex(0xB88A5BFF), 
 	"ti": Color.hex(0x8487ADFF), 
-	"fe": Color.hex(0x8487ADFF),
-	"au": Color.hex(0x8487ADFF),
-	"li": Color.hex(0x8487ADFF),
+	"fe": Color.hex(0xCBC5C3FF),
+	"au": Color.hex(0xD4C773FF),
+	"li": Color.hex(0x753636FF),
 	"ag": Color.hex(0xCAC9CFFF),
 	"u":  Color.hex(0xACDAACFF)
 }
@@ -24,7 +24,7 @@ var harvests_left: int = 0
 
 func _ready() -> void:
 	harvests_left = create_count
-	sprite.material = (sprite.material as ShaderMaterial).duplicate()
+	sprite.texture = sprite.texture.duplicate()
 
 func _process(_delta: float) -> void:
 	for body in reachable_region.get_overlapping_bodies():
@@ -32,10 +32,23 @@ func _process(_delta: float) -> void:
 
 			if Input.is_action_just_pressed("interact"):
 				_on_harvest()	
+				
+				
+	var progress: float = float(harvests_left) / create_count
+	var index: int
+	if progress > 0.8:
+		index = 0
+	elif progress > 0.6:
+		index = 1
+	elif progress > 0.4:
+		index = 2
+	else:
+		index = 3
+		
+	(sprite.texture as AtlasTexture).region = _GlobalManager.get_texture_region_indexed(
+		index, 32, 32, 1, 2
+	)
 
-	(sprite.material as ShaderMaterial).set_shader_parameter(&"cracking", (
-		float(harvests_left) / create_count
-	))
 
 func set_random_rock(random: RandomNumberGenerator):
 	var key: String = mineral_symbols.keys()[random.randi_range(0, mineral_symbols.keys().size() - 1)]

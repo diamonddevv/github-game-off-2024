@@ -5,13 +5,11 @@ const items_json_path: String = "res://resources/data/item.json"
 const recipes_json_path: String = "res://resources/data/recipes.json"
 
 var player: Player
-var world_generator: _WorldGenerator
 
 var item_types: Dictionary # string to ItemType
 var recipes: Array[CraftRecipe]
 
 func _ready() -> void:
-	world_generator = get_tree().root.get_node("WorldGenerator");
 	
 	load_item_types()
 	load_recipes()
@@ -46,7 +44,7 @@ func load_recipes():
 		
 		recipes.append(recipe)
 		
-	if OS.is_debug_build():
+	if OS.is_debug_build() and false:
 		for item_id: String in item_types:
 			var item: ItemType = item_types[item_id]
 			var recipe := CraftRecipe.new()
@@ -60,14 +58,15 @@ func load_recipes():
 			recipes.append(recipe)
 			
 
-static func get_texture_region_indexed(index: int, width: int, height: int, seperation: int, row: int) -> Rect2i:
+static func get_texture_region_indexed(index: int, width: int, height: int, seperation: int, row: int) -> Rect2:
 	var x: int = (index % row)
-	var y: int = roundi(index / row)
+	var y: int = floori(index / row)
 
-	x = width * x + seperation * max(0, x - 1)
-	y = height * y + seperation * max(0, y - 1)
-
-	return Rect2i(x, y, width, height)
+	x = width * x + seperation * x
+	y = height * y + seperation * y
+	
+	
+	return Rect2(x, y, width, height)
 
 class CraftRecipe:
 	var recipe_name: String

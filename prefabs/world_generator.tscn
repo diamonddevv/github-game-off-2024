@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dtv38xksy3k8t"]
 
 [ext_resource type="Script" path="res://scripts/game/environment/world_generator.gd" id="1_mraq1"]
-[ext_resource type="TileSet" uid="uid://swxs527hgu2a" path="res://resources/tileset/test.tres" id="2_cvd6b"]
+[ext_resource type="TileSet" uid="uid://swxs527hgu2a" path="res://resources/tileset/tiles.tres" id="2_cvd6b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvnfj"]
 size = Vector2(10000, 5000)
@@ -10,7 +10,6 @@ size = Vector2(10000, 5000)
 scale = Vector2(10, 10)
 script = ExtResource("1_mraq1")
 tileset = ExtResource("2_cvd6b")
-world_size = 256
 
 [node name="KillZone" type="Area2D" parent="."]
 position = Vector2(0, 3000)

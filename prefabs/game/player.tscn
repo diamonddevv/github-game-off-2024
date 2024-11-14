@@ -97,6 +97,7 @@ z_index = 10
 collision_mask = 3
 script = ExtResource("1_xtbv3")
 speed = 4.0
+inv_size = 64
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.2, 1.2)

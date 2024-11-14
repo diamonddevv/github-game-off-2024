@@ -23,7 +23,6 @@ SignalBus="*res://scripts/signal_bus.gd"
 ItemUseAction="*res://scripts/misc/item_use_actions.gd"
 RecipeFactoryAL="*res://scripts/misc/recipe_factory.gd"
 EnvironmentManager="*res://scripts/game/environment/environment_manager.gd"
-WorldGenerator="*res://prefabs/world_generator.tscn"
 
 [display]
 

@@ -16,6 +16,7 @@ signal on_die()
 @export var max_jumps: int = 2
 @export var jump_height_falloff: float = 0.9
 @export var max_health: float = 100
+@export var inv_size: int = 32
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var jump_particle: CPUParticles2D = $Sprite/JumpParticle
@@ -42,8 +43,6 @@ func _ready() -> void:
 	
 	health = max_health
 	
-
-	global_position = GlobalManager.world_generator.snap_to_tilemap_top(global_position)
 	
 
 func _physics_process(delta: float) -> void:
@@ -55,6 +54,8 @@ func _physics_process(delta: float) -> void:
 	_last_on_ground = is_on_floor()
 	
 func _process(_delta: float) -> void:
+	overlay.inventory.max_size = inv_size
+	
 	var item_id: String = overlay.get_item_idx()
 	
 	if Input.is_action_just_pressed("throw_item") and item_id != "":

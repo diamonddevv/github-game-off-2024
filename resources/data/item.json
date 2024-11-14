@@ -59,6 +59,13 @@
 			"use_action": "eat_food",
 			"use_data": { "heal": 5 }
 		},
+		{
+			"item_name": "Rock",
+			"id": "rock",
+			"atlas": "items",
+			"texture_idx": 8,
+			"use_action": "none"
+		},
 
 		{
 			"item_name": "Copper Ingot",

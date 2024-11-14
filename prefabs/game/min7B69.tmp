@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctdphhxd33sj"]
+
+[ext_resource type="Script" path="res://scripts/game/objects/mineral_rock.gd" id="1_4s1uo"]
+[ext_resource type="Shader" path="res://resources/shader/rock_cracking.gdshader" id="1_jaamg"]
+[ext_resource type="Texture2D" uid="uid://c166ris5i5wey" path="res://resources/texture/icon.svg" id="1_uyu4q"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_386wd"]
+noise_type = 2
+frequency = 0.05
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tq68y"]
+noise = SubResource("FastNoiseLite_386wd")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nkkub"]
+shader = ExtResource("1_jaamg")
+shader_parameter/cracking = 0.0
+shader_parameter/noise = SubResource("NoiseTexture2D_tq68y")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eq18k"]
+size = Vector2(256, 150)
+
+[node name="MineralRock" type="Node2D"]
+z_index = -2
+script = ExtResource("1_4s1uo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.707466, 0.453305, 0.0706227, 1)
+material = SubResource("ShaderMaterial_nkkub")
+position = Vector2(0, 27.5)
+scale = Vector2(1, 0.570313)
+texture = ExtResource("1_uyu4q")
+
+[node name="ReachableRegion" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReachableRegion"]
+position = Vector2(0, 29)
+shape = SubResource("RectangleShape2D_eq18k")

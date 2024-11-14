@@ -16,7 +16,6 @@ world_size = 256
 position = Vector2(0, 3000)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_lvnfj")
 
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]

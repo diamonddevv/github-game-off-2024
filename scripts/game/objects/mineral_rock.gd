@@ -24,6 +24,7 @@ var harvests_left: int = 0
 
 func _ready() -> void:
 	harvests_left = create_count
+	sprite.material = (sprite.material as ShaderMaterial).duplicate()
 
 func _process(_delta: float) -> void:
 	for body in reachable_region.get_overlapping_bodies():
@@ -32,7 +33,9 @@ func _process(_delta: float) -> void:
 			if Input.is_action_just_pressed("interact"):
 				_on_harvest()	
 
-	(sprite.material as ShaderMaterial).set_shader_parameter(&"cracking", float(harvests_left) / float(create_count))
+	(sprite.material as ShaderMaterial).set_shader_parameter(&"cracking", (
+		float(harvests_left) / create_count
+	))
 
 func set_random_rock(random: RandomNumberGenerator):
 	var key: String = mineral_symbols.keys()[random.randi_range(0, mineral_symbols.keys().size() - 1)]

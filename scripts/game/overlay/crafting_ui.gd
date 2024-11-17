@@ -1,8 +1,6 @@
 extends MarginContainer
 class_name CraftingUi
 
-
-
 @onready var crafting_vbox: VBoxContainer = $VBoxContainer/VBoxContainer
 @onready var crafting_label: Label = $VBoxContainer/Label
 

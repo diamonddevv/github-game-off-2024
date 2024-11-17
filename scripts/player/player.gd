@@ -37,16 +37,16 @@ func _ready() -> void:
 	GlobalManager.player = self
 	
 	overlay = Prefabs.overlay.instantiate()
-	overlay.inventory = player_inventory
-	
 	get_tree().get_current_scene().add_child.call_deferred(overlay)
+	overlay.preinit_inventory = player_inventory
 	
 	health = max_health
 	
 	
 
 func _physics_process(delta: float) -> void:
-	_player_movement(delta)
+	if not RocketUi.ui_open:
+		_player_movement(delta)
 	
 	$CollisionShape2D.shape.size = Vector2(40, 30 if _crouching else 40)
 	$CollisionShape2D.position = Vector2(0, 15 if _crouching else 10)
@@ -54,9 +54,9 @@ func _physics_process(delta: float) -> void:
 	_last_on_ground = is_on_floor()
 	
 func _process(_delta: float) -> void:
-	overlay.inventory.max_size = inv_size
+	overlay.invui.inventory.max_size = inv_size
 	
-	var item_id: String = overlay.get_item_idx()
+	var item_id: String = overlay.invui.get_item_idx()
 	
 	if Input.is_action_just_pressed("throw_item") and item_id != "":
 		
@@ -87,7 +87,7 @@ func get_grav() -> float:
 	
 	
 func die() -> void:
-	print("player died")
+	print("player died lol what a loser")
 	get_tree().quit()
 
 func _player_movement(delta: float) -> void:

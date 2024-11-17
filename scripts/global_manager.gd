@@ -6,6 +6,8 @@ const recipes_json_path: String = "res://resources/data/recipes.json"
 
 var player: Player
 
+var planet_name: String
+
 var item_types: Dictionary # string to ItemType
 var recipes: Array[CraftRecipe]
 
@@ -82,6 +84,12 @@ class ItemInstance:
 		item.item_id = id
 
 		return item
+		
+	static func create(id: String, count: int) -> ItemInstance:
+		var i := ItemInstance.new()
+		i.id = id
+		i.count = count
+		return i
 
 	
 class ItemType:

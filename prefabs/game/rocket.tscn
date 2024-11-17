@@ -1,17 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://cre8hki0xv04h"]
+[gd_scene load_steps=5 format=3 uid="uid://cre8hki0xv04h"]
 
-[ext_resource type="Script" path="res://scripts/game/objects/crafting_station.gd" id="1_7qybj"]
-[ext_resource type="Texture2D" uid="uid://c166ris5i5wey" path="res://resources/texture/icon.svg" id="2_73uod"]
+[ext_resource type="Script" path="res://scripts/game/objects/rocket.gd" id="1_xjebm"]
+[ext_resource type="Texture2D" uid="uid://bdtwvor11qmux" path="res://resources/texture/misc/rocket.png" id="2_ktysa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujdif"]
+atlas = ExtResource("2_ktysa")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5gfw"]
 size = Vector2(256, 256)
 
-[node name="CraftingStation" type="Node2D"]
-script = ExtResource("1_7qybj")
+[node name="Rocket" type="Node2D"]
+script = ExtResource("1_xjebm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0.733978, 0.611725, 1)
-texture = ExtResource("2_73uod")
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_ujdif")
 
 [node name="ReachableRegion" type="Area2D" parent="."]
 

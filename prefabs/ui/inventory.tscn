@@ -1,0 +1,101 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnvqc3c0028df"]
+
+[ext_resource type="PackedScene" uid="uid://lmgyv58cbri8" path="res://prefabs/ui/inventory_cell.tscn" id="1_pjmk8"]
+[ext_resource type="Script" path="res://scripts/inventory/inventory_ui.gd" id="1_wacxd"]
+
+[node name="Inventory" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_wacxd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "0/0 | "
+
+[node name="Cells" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 24
+columns = 5
+
+[node name="InventoryCell" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell2" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell3" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell4" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell5" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell6" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell7" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell8" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell9" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell10" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell11" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell12" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell13" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell14" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell15" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell16" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell17" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell18" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell19" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell20" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell21" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell22" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell23" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell24" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2
+
+[node name="InventoryCell25" parent="VBoxContainer/Cells" instance=ExtResource("1_pjmk8")]
+layout_mode = 2

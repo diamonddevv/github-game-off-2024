@@ -36,8 +36,8 @@ color = Color(0, 0, 0, 1)
 [node name="LowerWorldShader" type="ColorRect" parent="."]
 z_index = 2
 material = SubResource("ShaderMaterial_yt0f4")
-offset_left = -25000.0
-offset_top = -1460.0
-offset_right = 25000.0
-offset_bottom = 200.0
+offset_left = -25018.0
+offset_top = -1114.0
+offset_right = 24982.0
+offset_bottom = 115.0
 color = Color(1, 1, 1, 0)

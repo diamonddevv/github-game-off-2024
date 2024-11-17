@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://degv3m3bqmrur"]
+
+[ext_resource type="Script" path="res://scripts/game/uid/rocket_menu.gd" id="1_mfrt1"]
+[ext_resource type="PackedScene" uid="uid://cnvqc3c0028df" path="res://prefabs/ui/inventory.tscn" id="2_gmh8h"]
+[ext_resource type="PackedScene" uid="uid://ii52l1cokt37" path="res://prefabs/ui/crafting_ui.tscn" id="3_b28mo"]
+[ext_resource type="PackedScene" uid="uid://diyqhcxp7u6w1" path="res://prefabs/ui/required_parts_list.tscn" id="4_e7q3x"]
+
+[node name="RocketUi" type="CanvasLayer"]
+script = ExtResource("1_mfrt1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.301961, 0.301961, 0.301961, 1)
+
+[node name="Inventory" parent="." instance=ExtResource("2_gmh8h")]
+
+[node name="CraftingUi" parent="." instance=ExtResource("3_b28mo")]
+
+[node name="RequiredPartsList" parent="." instance=ExtResource("4_e7q3x")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -86.0
+offset_right = 86.0
+offset_bottom = 38.0
+grow_vertical = 1
+
+[node name="PlanetNameLabel" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -44.0
+offset_right = 40.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Planet "
+horizontal_alignment = 1
+vertical_alignment = 1

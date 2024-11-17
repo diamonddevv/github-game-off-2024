@@ -100,7 +100,7 @@ func generate_planet_name(random: RandomNumberGenerator) -> String:
 		"Ukrainian", "Romanian", "Dutch", "Belgian", "Czech", "Swedish", "Portugese", "Greek", "Hungarian",
 		"Austrian", "Swiss", "Belarusian", "Swiss", "Bulgarian", "Serbian", "Danish", "Finnish", "Norwegian",
 		"Slovak", "Irish", "Croatian", "Bosnian", "Moldovan", "Lithuanian", "Albanian", "Slovene", "Latvian", "Macedonian",
-		"Estonian", "Luxembourgish", "Montenegrin", "Maltese", "Icelandic", "Andorran", "Liechtensteinian", "Monocan", "Sanmarinese", "Vatican",
+		"Estonian", "Luxembourgish", "Montenegrin", "Maltese", "Icelandic", "Andorran", "Liechtensteinian", "Monégasque", "Sanmarinese", "Vatican",
 		"Faeroese", "Ålandic", "Manx",
 		
 		"Mooned", "Ringed",

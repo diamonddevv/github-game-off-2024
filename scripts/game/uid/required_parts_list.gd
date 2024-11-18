@@ -3,7 +3,7 @@ class_name RequiredPartsList
 
 @onready var cells: VBoxContainer = $VBoxContainer/VBoxContainer
 
-var parts_required: Array[_GlobalManager.ItemInstance] = [
+static var parts_required: Array[_GlobalManager.ItemInstance] = [
 	_GlobalManager.ItemInstance.create("ore_u", 1),
 	_GlobalManager.ItemInstance.create("ingot_cu", 2),
 	_GlobalManager.ItemInstance.create("ore_fe", 3),

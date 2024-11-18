@@ -73,7 +73,7 @@ func _process(_delta: float) -> void:
 		
 		player_inventory.remove_item(item_id, 1)
 		
-	if Input.is_action_just_pressed("use_item"):
+	if Input.is_action_just_pressed("use_item") and not RocketUi.ui_open:
 		overlay.use_item()
 		
 	if health <= 0:

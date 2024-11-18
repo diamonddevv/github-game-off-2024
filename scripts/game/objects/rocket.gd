@@ -20,6 +20,7 @@ func _process(_delta: float) -> void:
 			
 			if Input.is_action_just_pressed("interact") and not RocketUi.ui_open:
 				var ui: RocketUi = Prefabs.rocket_ui.instantiate()
+				ui.rocket = self
 				get_tree().current_scene.add_child(ui)
 				
 				await ui.ui_closed

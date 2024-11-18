@@ -10,7 +10,7 @@ var can_use_this_item: bool
 var inventory: Inventory
 var selected_idx: int = -1
 var inv_cells: Array[InventoryCell]
-
+var other_label_texts: Array[String]
 
 
 func _process(_delta: float) -> void:
@@ -34,8 +34,12 @@ func _process(_delta: float) -> void:
 		
 		
 	can_use_this_item = get_can_use_item()
-	if can_use_this_item:
+	if can_use_this_item and not RocketUi.ui_open:
 		capacity.text += " | Can Use"
+		
+	for txt in other_label_texts:
+		capacity.text += txt
+	other_label_texts.clear()
 
 func _populate() -> void:
 	inv_cells = []
@@ -66,10 +70,10 @@ func _get_item_name() -> String:
 		return GlobalManager.item_types[get_item_idx()].item_name
 
 func get_item_idx() -> String:
-	if selected_idx < 0:
+	if selected_idx < 0 or selected_idx >= inv_cells.size():
 		return ""
 	else:
-		return inv_cells[selected_idx].item_id
+		return inv_cells[clamp(selected_idx, 0, inv_cells.size() - 1)].item_id
 
 
 func get_can_use_item() -> bool:
